@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>个人通讯录系统</title>
+    <style>
+        /* 添加一些基本的样式来美化界面 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .contact-list {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .contact-list th, .contact-list td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .contact-list th {
+            background-color: #f2f2f2;
+        }
+        .contact-form {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>个人通讯录系统</h1>
+
+<!-- 显示联系人列表 -->
+<table class="contact-list">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>住址</th>
+        <th>电话</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="contact-list">
+    <!-- 这里将通过JavaScript动态填充联系人列表 -->
+    </tbody>
+</table>
+
+<!-- 添加、编辑联系人表单 -->
+<div class="contact-form">
+    <h2>添加/编辑联系人</h2>
+    <form id="contact-form">
+        <input type="hidden" id="contact-id" value="0"> <!-- 用于存储联系人ID -->
+        <input type="text" id="name" placeholder="姓名" required>
+        <input type="text" id="address" placeholder="住址" required>
+        <input type="text" id="phone" placeholder="电话" required>
+        <button type="submit">保存</button>
+    </form>
+</div>
+
+<!-- JavaScript代码用于与后端API交互 -->
+<script>
+    const contactList = document.getElementById("contact-list");
+    const contactForm = document.getElementById("contact-form");
+
+    // 通过JavaScript从后端获取联系人列表
+    function fetchContacts() {
+        // 使用Fetch API或其他XHR库来发送GET请求到后端获取联系人数据
+        // 处理响应并将联系人数据动态添加到表格中
+    }
+
+    // 保存联系人信息
+    contactForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const contactId = document.getElementById("contact-id").value;
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const phone = document.getElementById("phone").value;
+
+        // 使用Fetch API或其他XHR库发送POST请求到后端来保存联系人数据
+        // 处理响应并更新联系人列表
+
+        // 清空表单
+        document.getElementById("contact-id").value = "0";
+        contactForm.reset();
+    });
+
+    // 填充表单以编辑联系人
+    function editContact(id, name, address, phone) {
+        document.getElementById("contact-id").value = id;
+        document.getElementById("name").value = name;
+        document.getElementById("address").value = address;
+        document.getElementById("phone").value = phone;
+    }
+
+    // 删除联系人
+    function deleteContact(id) {
+        // 使用Fetch API或其他XHR库发送DELETE请求到后端来删除联系人
+        // 处理响应并更新联系人列表
+    }
+
+    // 初始化页面，获取联系人列表
+    fetchContacts();
+</script>
+</body>
+</html>
